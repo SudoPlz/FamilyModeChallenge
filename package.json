@@ -25,6 +25,7 @@
     "@reduxjs/toolkit": "^2.2.2",
     "axios": "^1.6.8",
     "formik": "^2.4.5",
+    "lodash": "^4.17.21",
     "react": "18.2.0",
     "react-native": "0.74.2",
     "react-native-dotenv": "^3.4.11",
