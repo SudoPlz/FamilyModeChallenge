@@ -1,11 +1,6 @@
 import axios, { type RawAxiosRequestHeaders } from 'axios';
-import { BASE_URL } from '@env';
 import statusHandler from '../statusHandler';
-
-const ContentTypes = {
-  json: 'application/json',
-  mfd: 'multipart/form-data',
-};
+import { ContentTypes, BASE_URL } from './ApiClient.constants';
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
@@ -37,8 +32,8 @@ axios.interceptors.response.use(
 );
 
 // Base function for GET requests
-export const get = (route: string) => {
-  return apiClient(`${BASE_URL}/${route}`);
+export const get = <ExpectedDataResponse = any>(route: string) => {
+  return apiClient<ExpectedDataResponse>(`${BASE_URL}/${route}`);
 };
 
 // Base function for POST requests

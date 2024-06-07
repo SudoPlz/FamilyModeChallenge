@@ -7,8 +7,10 @@ export type InitialUserState = {
   users: Array<User> | null;
   loading: {
     fetchUsers: boolean;
+    fetchSingleUser: boolean;
   };
   error: {
     fetchUsers: StateError<string>;
+    fetchSingleUser: StateError<string>;
   };
 };
