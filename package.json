@@ -15,7 +15,8 @@
     "nuclear": "yarn cleanInstall && yarn startClean",
     "test": "jest",
     "reverse": "adb -s emulator-5554 reverse tcp:4001 tcp:4001",
-    "adb-log": "adb logcat *:E"
+    "adb-log": "adb logcat *:E",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@react-native-community/netinfo": "^11.3.1",

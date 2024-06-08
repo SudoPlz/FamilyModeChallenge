@@ -1,0 +1,21 @@
+diff --git a/node_modules/react-native-reanimated-carousel/src/layouts/BaseLayout.tsx b/node_modules/react-native-reanimated-carousel/src/layouts/BaseLayout.tsx
+index 5447cef..cd0a166 100644
+--- a/node_modules/react-native-reanimated-carousel/src/layouts/BaseLayout.tsx
++++ b/node_modules/react-native-reanimated-carousel/src/layouts/BaseLayout.tsx
+@@ -16,6 +16,7 @@ import { useOffsetX } from "../hooks/useOffsetX";
+ import type { IVisibleRanges } from "../hooks/useVisibleRanges";
+ import { LazyView } from "../LazyView";
+ import { CTX } from "../store";
++import { DefaultStyle } from "react-native-reanimated/lib/typescript/reanimated2/hook/commonTypes";
+ 
+ export type TAnimationStyle = (value: number) => AnimatedStyleProp<ViewStyle>;
+ 
+@@ -73,7 +74,7 @@ export const BaseLayout: React.FC<{
+   const x = useOffsetX(offsetXConfig, visibleRanges);
+   const animationValue = useDerivedValue(() => x.value / size, [x, size]);
+   const animatedStyle = useAnimatedStyle(
+-    () => animationStyle(x.value / size),
++    () => animationStyle(x.value / size) as DefaultStyle,
+     [animationStyle],
+   );
+ 
