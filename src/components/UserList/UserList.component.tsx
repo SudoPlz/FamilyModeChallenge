@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import styles from './UserList.styles';
 import { UserList } from './UserList.types';
-import Button from '../Shared/Button';
+import UserCarousel from '../Shared/UserCarousel';
 import type { User } from '../../store/state/user/user.types';
+import Layout from '../Shared/Layout';
+import Text from '../Shared/Text';
 
 type UserListComponentProps = {
   users: UserList | null;
@@ -14,19 +16,29 @@ type UserListComponentProps = {
 const UserListContainer: React.FC<UserListComponentProps> = ({
   isLoading,
   users,
-  // onUserSelected,
+  onUserSelected,
 }) => {
+  if (isLoading) {
+    return (
+      <Layout style={styles.container}>
+        <ActivityIndicator
+          animating
+          size="large"
+          color="white"
+          style={styles.loadingIndicator}
+        />
+      </Layout>
+    );
+  }
   return (
-    <View style={styles.container}>
-      <ActivityIndicator animating={isLoading} />
-      <Text>List of users: {JSON.stringify(users?.[0])}</Text>
-      <Button
-        onPress={() => {
-          // onUserSelected(users[0]); // TODO
-        }}>
-        <Text>Button</Text>
-      </Button>
-    </View>
+    <Layout style={styles.container}>
+      <Text style={styles.title}>Select a user:</Text>
+      <UserCarousel
+        users={users}
+        style={styles.carousel}
+        onUserSelected={onUserSelected}
+      />
+    </Layout>
   );
 };
 
