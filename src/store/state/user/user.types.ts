@@ -1,9 +1,16 @@
 import { StateError } from '../state.types';
 
-export type User = {};
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+};
 
 export type InitialUserState = {
-  selectedUser: User | null;
+  selectedUser: {
+    user: User;
+    intervals: Array<any>;
+  } | null;
   users: Array<User> | null;
   loading: {
     fetchUsers: boolean;

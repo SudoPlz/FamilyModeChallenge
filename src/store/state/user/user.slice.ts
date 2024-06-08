@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import EightSleepApi from '../../../network/EightSleepApi';
-import type { InitialUserState } from './user.types';
+import type { InitialUserState, User } from './user.types';
 
 const initialState: InitialUserState = {
   selectedUser: null,
@@ -25,7 +25,12 @@ export const fetchSingleUser = createAsyncThunk(
   'data/fetchSingleUser',
   async (userId: string) => {
     const response = await EightSleepApi.user.fetchSingleUser(userId);
-    return response.data?.intervals || [];
+    return (
+      {
+        userId,
+        intervals: response.data?.intervals ?? [],
+      } || []
+    );
   },
 );
 
@@ -57,7 +62,16 @@ const userSlice = createSlice({
       })
       .addCase(fetchSingleUser.fulfilled, (state, action) => {
         state.loading.fetchSingleUser = false;
-        state.selectedUser = action.payload;
+        const { userId, intervals } = action.payload;
+        const fetchedUser = state.users?.find(
+          (item: User) => item.id === userId,
+        );
+        if (fetchedUser) {
+          state.selectedUser = {
+            user: fetchedUser,
+            intervals,
+          };
+        }
       })
       .addCase(fetchSingleUser.rejected, (state, action) => {
         state.loading.fetchSingleUser = false;
