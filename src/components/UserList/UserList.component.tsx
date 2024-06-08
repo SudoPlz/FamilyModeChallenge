@@ -20,7 +20,7 @@ const UserListContainer: React.FC<UserListComponentProps> = ({
 }) => {
   if (isLoading) {
     return (
-      <Layout style={styles.container}>
+      <Layout style={styles.container} showLogo>
         <ActivityIndicator
           animating
           size="large"
@@ -31,7 +31,7 @@ const UserListContainer: React.FC<UserListComponentProps> = ({
     );
   }
   return (
-    <Layout style={styles.container}>
+    <Layout style={styles.container} showLogo>
       <Text style={styles.title}>Select a user:</Text>
       <UserCarousel
         users={users}

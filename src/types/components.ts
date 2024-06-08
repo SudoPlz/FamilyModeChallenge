@@ -5,6 +5,7 @@ import { ViewStyle, StyleProp, TextInputProps, ViewProps } from 'react-native';
 export interface LayoutPropsType extends ViewProps {
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
+  showLogo?: boolean;
 }
 
 // MenuItem

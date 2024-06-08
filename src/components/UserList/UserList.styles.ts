@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
   },
-
   title: {
     top: '20%',
     fontSize: 24,

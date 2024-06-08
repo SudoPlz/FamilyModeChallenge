@@ -75,7 +75,7 @@ const themes: themesType = {
     color: '#695D5D',
     primary: '#2bbca2',
     layoutBg: '#000000',
-    cardBg: '#000000',
+    cardBg: '#151515',
     cardBorderColor: '#EEECEC',
     accent: '#0071ff',
     error: '#B00020',
