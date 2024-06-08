@@ -1,11 +1,12 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import ReduxProvider from './src/store';
-import { ThemeProvider } from './src/theme/useTheme';
-import { NoInternetToast } from './src/components/Shared/NoInternet';
+import ReduxProvider from './store';
+import { ThemeProvider } from './theme/useTheme';
+import { NoInternetToast } from './components/Shared/NoInternet';
 
 // Navigation
-import RootNavigation from './src/routes/RootNavigation';
+import RootNavigation from './routes/RootNavigation';
 
 let Root = function App() {
   return (
