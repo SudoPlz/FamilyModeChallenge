@@ -23,7 +23,7 @@ const UserCarouselItem = ({
   return (
     <GradientBorder thickness={7} borderRadius={90}>
       <Button
-        mode="highlight"
+        mode="opacity"
         key={item.id ?? index}
         style={styles.itemContainer}
         onPress={onUserSelect}>
