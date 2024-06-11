@@ -4,6 +4,7 @@ import styles from './SleepDetails.styles';
 import Layout from '../Shared/Layout';
 import type { SelectedUserData } from 'src/store/state/user/user.types';
 import { useNavigation } from '../../routes/Router.hooks';
+import DatePicker from '../Shared/DatePicker/DatePicker';
 
 type SleepDetailsComponentProps = {
   isLoading: boolean;
@@ -35,6 +36,7 @@ const SleepDetailsContainer = ({
   return (
     <Layout style={styles.container}>
       <Text>Details</Text>
+      <DatePicker />
     </Layout>
   );
 };
