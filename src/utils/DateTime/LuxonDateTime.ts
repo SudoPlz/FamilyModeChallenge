@@ -240,12 +240,12 @@ export default class LuxonDateTime {
   }
 
   isTomorrow = (): boolean => {
-    const tomorrow = new LuxonDateTime(this.instance).add(1, 'day');
+    const tomorrow = LuxonDateTime.now().add(1, 'day');
     return this.isSame(tomorrow, 'day');
   };
 
   isYesterday = (): boolean => {
-    const yesterday = new LuxonDateTime(this.instance).subtract(1, 'day');
+    const yesterday = LuxonDateTime.now().subtract(1, 'day');
     return this.isSame(yesterday, 'day');
   };
 }
