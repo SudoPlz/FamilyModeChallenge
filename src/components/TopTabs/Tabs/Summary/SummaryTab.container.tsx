@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SummaryTabComponent from './SummaryTab.component';
 import withState from 'src/store/hooks/withState';
 import { SummaryTabProps, SummaryTabSelectedState } from './SummaryTab.types';
 
-const SummaryTabContainer = ({ selectedState }: SummaryTabProps) => {
+const SummaryTabContainer = ({ navigation }: SummaryTabProps) => {
+  const [isFocused, setIsFocused] = useState(navigation.isFocused());
+  React.useEffect(() => {
+    const unsubscribeIsFocused = navigation.addListener('focus', () => {
+      setIsFocused(true);
+    });
+    const unsubscribeIsBlured = navigation.addListener('blur', () => {
+      setIsFocused(false);
+    });
+    return () => {
+      unsubscribeIsFocused();
+      unsubscribeIsBlured();
+    };
+  }, [navigation]);
   return (
-    <SummaryTabComponent selectedUserData={selectedState?.selectedUserData} />
+    <SummaryTabComponent
+      isFocused={isFocused}
+      sleepScore={65} // TODO Add real values
+      totalHours={8} // TODO Add real values
+      averageHeartRate={83} // TODO Add real values
+    />
   );
 };
 
