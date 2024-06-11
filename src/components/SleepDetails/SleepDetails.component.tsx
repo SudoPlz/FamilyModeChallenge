@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Text, ActivityIndicator } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import styles from './SleepDetails.styles';
 import Layout from '../Shared/Layout';
 import type { SelectedUserData } from '../../store/state/user/user.types';
@@ -42,7 +42,6 @@ const SleepDetailsContainer = ({
   }
   return (
     <Layout style={styles.container}>
-      <Text>Details</Text>
       <DatePicker selectedDate={selectedDate} onDateChange={onDatePicked} />
     </Layout>
   );

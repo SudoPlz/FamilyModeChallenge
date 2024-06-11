@@ -10,10 +10,12 @@ const styles = StyleSheet.create({
   dateTitleContainer: {
     flexGrow: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   dateTitleText: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
+    color: 'white',
   },
 });
 

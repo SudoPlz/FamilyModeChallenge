@@ -31,7 +31,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
       return 'Last night';
     }
 
-    return selectedDate.format('LLLL d');
+    return selectedDate.format('ccc, LLLL d yyyy');
   }, [isToday, selectedDate]);
 
   const isTodayOrFutureDate =

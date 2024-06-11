@@ -140,7 +140,9 @@ export default class LuxonDateTime {
   };
 
   luxonFormat = (luxonFormat: string): string => {
-    return this.instance.toFormat(luxonFormat);
+    return this.instance
+      .plus(0) // workaround for https://github.com/moment/luxon/issues/740
+      .toFormat(luxonFormat);
   };
 
   format = (luxonFormat: string): string => {
