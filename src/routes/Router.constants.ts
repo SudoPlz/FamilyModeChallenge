@@ -1,11 +1,8 @@
 export enum ScreenNames {
   UserList = 'Users',
   SleepDetails = 'Sleep Details',
-}
-
-export enum SleepDetailsTabNames {
-  Summary = 'Summary',
-  Statistics = 'Statistics',
-  Temperature = 'Temperature',
-  TossAndTurn = 'TossAndTurn',
+  SummaryTab = 'Summary',
+  StatisticsTab = 'Statistics',
+  TemperatureTab = 'Temperature',
+  TossAndTurnTab = 'TossAndTurn',
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import Icon from '../../../../Shared/Icon';
+import Icon from '../../../Shared/Icon';
 
 export const TossAndTurnTabBarIcon = ({
   focused,

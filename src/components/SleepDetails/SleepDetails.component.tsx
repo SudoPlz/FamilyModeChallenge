@@ -6,7 +6,7 @@ import type { SelectedUserData } from '../../store/state/user/user.types';
 import { useNavigation } from '../../routes/Router.hooks';
 import DatePicker from '../Shared/DatePicker/DatePicker';
 import DateTime from '../../utils/DateTime';
-import TopTabs from './TopTabs/TopTabsNavigation';
+import TopTabs from '../TopTabs/TopTabsNavigation';
 
 type SleepDetailsComponentProps = {
   isLoading: boolean;
