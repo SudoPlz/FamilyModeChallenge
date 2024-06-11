@@ -12,10 +12,18 @@ export type ButtonProps = {
   children?: React.ReactNode;
   mode?: 'opacity' | 'highlight';
   style?: ViewStyle;
+  disabled?: boolean;
 };
 type TouchableType = typeof TouchableOpacity | typeof TouchableHighlight;
 
-const Button = ({ onPress, text, children, style, mode }: ButtonProps) => {
+const Button = ({
+  onPress,
+  text,
+  children,
+  style,
+  mode,
+  disabled,
+}: ButtonProps) => {
   // const { theme } = useTheme();
   let Touchable: TouchableType = TouchableOpacity;
   if (mode === 'highlight') {
@@ -23,6 +31,7 @@ const Button = ({ onPress, text, children, style, mode }: ButtonProps) => {
   }
   return (
     <Touchable
+      disabled={disabled}
       style={[styles.container, style]}
       containerStyle={styles.touchableContainer}
       onPress={onPress}>
