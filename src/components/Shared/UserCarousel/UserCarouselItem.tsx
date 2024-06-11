@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from '../Icon';
 import Button from '../Button';
 import Text from '../Text';
 import GradientBorder from '../GradientBorder';
