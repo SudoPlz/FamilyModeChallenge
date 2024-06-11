@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { View } from 'react-native';
 import DateTime from '../../../utils/DateTime';
 import Button from '../Button';
@@ -6,31 +6,32 @@ import Text from '../Text';
 import styles from './DatePicker.styles';
 
 interface DatePickerProps {
-  initialDate?: DateTime;
+  selectedDate: DateTime;
+  onDateChange: (date: DateTime) => void;
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
-  const [selectedDate, setSelectedDate] = useState<DateTime>(
-    initialDate ?? DateTime.now(),
-  );
+const DatePicker: React.FC<DatePickerProps> = ({
+  selectedDate,
+  onDateChange,
+}) => {
+  const handlePreviousDate = useCallback(() => {
+    onDateChange(selectedDate.subtract(1, 'day'));
+  }, [onDateChange, selectedDate]);
 
-  const handlePreviousDate = () => {
-    setSelectedDate(prevDate => prevDate.subtract(1, 'day'));
-  };
+  const handleNextDate = useCallback(() => {
+    onDateChange(selectedDate.add(1, 'day'));
+  }, [onDateChange, selectedDate]);
 
-  const handleNextDate = () => {
-    setSelectedDate(prevDate => prevDate.add(1, 'day'));
-  };
   const isToday = selectedDate.isToday();
   const selectedDateString = useMemo(() => {
     if (isToday) {
-      return 'Today';
+      return 'Tonight';
     }
     if (selectedDate.isYesterday()) {
-      return 'Yesterday';
+      return 'Last night';
     }
 
-    return selectedDate.format('yyyy-MM-dd');
+    return selectedDate.format('LLLL d');
   }, [isToday, selectedDate]);
 
   const isTodayOrFutureDate =
