@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import isEqual from 'lodash/isEqual';
 import withState from '../../store/hooks/withState';
 import SleepDetailsComponent from './SleepDetails.component';
 import type {
@@ -33,5 +32,4 @@ export default withState(
       isFetchingSingleUserData: state.user.loading.fetchSingleUser,
       selectedUserData: state.user.selectedUser,
     } as SleepDetailsSelectedState),
-  isEqual,
 );

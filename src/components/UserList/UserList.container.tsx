@@ -1,5 +1,4 @@
 import React, { PropsWithChildren, useCallback, useEffect } from 'react';
-import isEqual from 'lodash/isEqual';
 import UserListComponent from './UserList.component';
 import withState from '../../store/hooks/withState';
 import { ScreenNames } from '../../routes/Router.constants';
@@ -43,5 +42,4 @@ export default withState(
       users: state.user.users,
       isFetchingUsers: state.user.loading.fetchUsers,
     } as UserSelectedState),
-  isEqual,
 );

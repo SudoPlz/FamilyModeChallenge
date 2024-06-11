@@ -1,6 +1,7 @@
 import React, { ComponentType, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators, ActionCreatorsMapObject } from 'redux';
+import isEqual from 'lodash/isEqual';
 import allActions from '../state/state.actions';
 import { RootState } from '../store'; // Adjust the import according to your store setup
 import type { GenericComponentProps } from '../../types/components';
@@ -31,7 +32,7 @@ const EmptySelectedState = {};
 const withState = <P extends GenericComponentProps, S>(
   WrappedComponent: ComponentType<P>,
   selector?: (state: RootState) => S,
-  equalityFn?: (a: S, b: S) => boolean,
+  equalityFn: (a: S, b: S) => boolean = isEqual,
 ) => {
   return (props: P) => {
     const dispatch = useDispatch();
