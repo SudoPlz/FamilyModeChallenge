@@ -43,6 +43,8 @@ export default function RootNavigation() {
             component={UserList as React.FC}
             options={{
               headerShown: false,
+              statusBarStyle: 'light',
+              statusBarAnimation: 'slide',
             }}
           />
           <Stack.Screen
@@ -50,6 +52,10 @@ export default function RootNavigation() {
             component={SleepDetails as React.FC}
             options={{
               headerShown: false,
+              animation: 'fade_from_bottom',
+              animationDuration: 400,
+              statusBarStyle: 'light',
+              statusBarAnimation: 'slide',
             }}
           />
         </Stack.Navigator>

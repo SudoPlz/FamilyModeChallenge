@@ -1,4 +1,4 @@
 export enum ScreenNames {
-  UserList = 'Welcome',
+  UserList = 'Users',
   SleepDetails = 'Sleep Details',
 }

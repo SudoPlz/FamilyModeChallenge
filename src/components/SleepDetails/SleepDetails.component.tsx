@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, ActivityIndicator } from 'react-native';
 import styles from './SleepDetails.styles';
 import Layout from '../Shared/Layout';
 import type { SelectedUserData } from 'src/store/state/user/user.types';
+import { useNavigation } from '../../routes/Router.hooks';
 
 type SleepDetailsComponentProps = {
   isLoading: boolean;
@@ -10,11 +11,18 @@ type SleepDetailsComponentProps = {
 };
 const SleepDetailsContainer = ({
   isLoading,
-}: // selectedUserData,
-SleepDetailsComponentProps) => {
+  selectedUserData,
+}: SleepDetailsComponentProps) => {
+  const navigation = useNavigation();
+  useEffect(() => {
+    if (selectedUserData?.user?.name) {
+      navigation.setOptions({ title: selectedUserData.user?.name });
+    }
+  }, [navigation, selectedUserData?.user?.name]);
+
   if (isLoading) {
     return (
-      <Layout style={styles.container} showLogo>
+      <Layout style={styles.container}>
         <ActivityIndicator
           animating
           size="large"
@@ -25,7 +33,7 @@ SleepDetailsComponentProps) => {
     );
   }
   return (
-    <Layout style={styles.container} showLogo>
+    <Layout style={styles.container}>
       <Text>Details</Text>
     </Layout>
   );

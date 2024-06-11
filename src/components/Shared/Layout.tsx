@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../../theme/useTheme';
 import EightSleepLogo from '../Shared/EightSleepLogo';
@@ -13,11 +13,6 @@ const Layout = ({ children, style, showLogo, ...rest }: LayoutPropsType) => {
     <SafeAreaView
       style={[styles.container, { backgroundColor: theme?.layoutBg }]}
       {...rest}>
-      <StatusBar
-        animated
-        backgroundColor={theme.cardBg}
-        barStyle={theme?.name === 'light' ? 'dark-content' : 'light-content'}
-      />
       <View
         testID="Layout.LayoutContainer"
         style={[styles.layout, { backgroundColor: theme?.layoutBg }, style]}>
