@@ -8,7 +8,6 @@ import styles, {
   ProgressInactiveBarColor,
   ProgressValueFontSize,
 } from './SummaryTab.styles';
-import { useTheme } from 'src/theme/useTheme';
 import Icon from 'src/components/Shared/Icon';
 import { ProgressRef } from 'react-native-circular-progress-indicator';
 
@@ -24,7 +23,6 @@ const SummaryTabComponent = ({
   averageHeartRate,
   isFocused,
 }: SummaryTabComponentProps) => {
-  const { theme } = useTheme();
   const circleAnimationRef = useRef<ProgressRef>(null);
 
   useEffect(() => {
@@ -36,7 +34,7 @@ const SummaryTabComponent = ({
 
   const onAnimationComplete = useCallback(() => {}, []);
   return (
-    <View style={[styles.container, { backgroundColor: theme.layoutBg }]}>
+    <View style={styles.container}>
       <View style={styles.percentageContainer}>
         <View style={styles.descriptionParent}>
           <View style={styles.descriptionContentContainer}>

@@ -14,6 +14,7 @@ const TopTabs = () => {
   const { theme } = useTheme();
   return (
     <Tab.Navigator
+      sceneContainerStyle={{ backgroundColor: theme.layoutBg }}
       initialRouteName={ScreenNames.SummaryTab}
       screenOptions={{
         tabBarShowLabel: false,
