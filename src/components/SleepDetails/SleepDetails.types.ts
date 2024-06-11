@@ -1,13 +1,13 @@
 import { PropsWithActionsAndState } from '../../store/hooks/withState';
-import type { UserList } from '../UserList/UserList.types';
 import { ScreenNames } from '../../routes/Router.constants';
+import type { SelectedUserData } from 'src/store/state/user/user.types';
 
-export type SleepDetailsState = {
-  users: UserList | null;
-  isFetchingUsers: boolean;
+export type SleepDetailsSelectedState = {
+  selectedUserData: SelectedUserData;
+  isFetchingSingleUserData: boolean;
 };
 export type SleepDetailsProps = PropsWithActionsAndState<
   {}, // props
-  SleepDetailsState, // redux state
+  SleepDetailsSelectedState, // redux state
   ScreenNames.SleepDetails // route name
 >;

@@ -6,11 +6,13 @@ export type User = {
   email: string;
 };
 
+export type SelectedUserData = {
+  user: User;
+  intervals: Array<any>;
+};
+
 export type InitialUserState = {
-  selectedUser: {
-    user: User;
-    intervals: Array<any>;
-  } | null;
+  selectedUser: SelectedUserData | null;
   users: Array<User> | null;
   loading: {
     fetchUsers: boolean;

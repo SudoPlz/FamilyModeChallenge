@@ -23,7 +23,12 @@ export const fetchUsers = createAsyncThunk('data/fetchAllUsers', async () => {
 
 export const fetchSingleUser = createAsyncThunk(
   'data/fetchSingleUser',
-  async (userId: string) => {
+  async (userId: string, { rejectWithValue }) => {
+    if (!userId) {
+      rejectWithValue(
+        `Can't fetch user without a user id. (value given: ${userId})`,
+      );
+    }
     const response = await EightSleepApi.user.fetchSingleUser(userId);
     return (
       {
