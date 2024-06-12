@@ -1,9 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import SummaryTabComponent from './SummaryTab.component';
 import withState from 'src/store/hooks/withState';
 import { SummaryTabProps, SummaryTabSelectedState } from './SummaryTab.types';
+import type { SleepInterval } from 'src/store/state/user/user.types';
+import { findIntervalForDateTime } from './SummaryTab.utils';
 
-const SummaryTabContainer = ({ navigation }: SummaryTabProps) => {
+const SummaryTabContainer = ({
+  navigation,
+  selectedState,
+}: SummaryTabProps) => {
+  const selectedDatetimeInterval = useMemo<SleepInterval | null>(() => {
+    return findIntervalForDateTime(
+      selectedState.selectedDate,
+      selectedState.selectedUserData?.intervals,
+    );
+  }, [selectedState.selectedDate, selectedState.selectedUserData]);
+
   const [isFocused, setIsFocused] = useState(navigation.isFocused());
   useEffect(() => {
     const unsubscribeIsFocused = navigation.addListener('focus', () => {
@@ -21,9 +33,9 @@ const SummaryTabContainer = ({ navigation }: SummaryTabProps) => {
   return (
     <SummaryTabComponent
       isFocused={isFocused}
-      sleepScore={65} // TODO Add real values
-      totalHours={8} // TODO Add real values
-      averageHeartRate={83} // TODO Add real values
+      sleepScore={selectedDatetimeInterval?.score}
+      totalHours={selectedDatetimeInterval?.totalSleepHours}
+      averageHeartRate={selectedDatetimeInterval?.averageHeartRate}
     />
   );
 };
@@ -33,5 +45,6 @@ export default withState(
   state =>
     ({
       selectedUserData: state.user.selectedUser,
+      selectedDate: state.user.selectedDate,
     } as SummaryTabSelectedState),
 );
