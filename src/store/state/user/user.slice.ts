@@ -9,7 +9,7 @@ import {
 import LuxonDateTime from 'src/utils/DateTime';
 
 const initialState: InitialUserState = {
-  selectedDate: LuxonDateTime.now(),
+  selectedDate: LuxonDateTime.fromString('2017-03-09T08:06:00.000Z'),
   selectedUser: null,
   users: null,
   loading: {

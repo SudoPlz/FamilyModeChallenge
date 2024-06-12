@@ -9,8 +9,7 @@ export function calculateTotalSleepHours(interval: UserEndpointInterval) {
       }
     }
   }
-
-  return totalSleepHours;
+  return Math.round(totalSleepHours * 10) / 10; // round to 1 decimal place
 }
 
 export function calculateAverageHeartRate(interval: UserEndpointInterval) {
@@ -23,5 +22,5 @@ export function calculateAverageHeartRate(interval: UserEndpointInterval) {
     }
   }
   const averageHeartRate = count > 0 ? totalHeartRate / count : 0;
-  return averageHeartRate;
+  return Math.round(averageHeartRate * 10) / 10; // round to 1 decimal place
 }
