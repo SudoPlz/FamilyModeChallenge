@@ -203,11 +203,6 @@ export default class LuxonDateTime {
     if (!unit) {
       return this.instance >= otherDateTime.instance;
     }
-    console.log(
-      `@@@ DIF ${this.diff(otherDateTime, unit)} of ${this.instance.toFormat(
-        'DD/YY',
-      )} from  ${otherDateTime.format('DD/YY')}`,
-    );
     return this.diff(otherDateTime, unit) >= 0;
   };
 

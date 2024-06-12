@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { themes } from 'src/theme/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,6 +19,19 @@ const styles = StyleSheet.create({
   title: {
     top: '20%',
     fontSize: 24,
+    color: 'white',
+  },
+  noUsersFoundTitle: {
+    fontSize: 24,
+    color: 'white',
+  },
+  retryButton: {
+    marginVertical: 20,
+    backgroundColor: '#246AFF',
+    borderRadius: 6,
+  },
+  noUsersFoundSubtitle: {
+    fontSize: 14,
     color: 'white',
   },
 });

@@ -8,30 +8,38 @@ import type {
   UserSelectedState,
 } from './UserList.types';
 
-const UserListContainer: React.FC<UserListContainerProps> = (
-  props: PropsWithChildren<UserListContainerProps>,
-) => {
+const UserListContainer: React.FC<UserListContainerProps> = ({
+  actions,
+  navigation,
+  selectedState,
+}: PropsWithChildren<UserListContainerProps>) => {
   useEffect(() => {
     // on screen load, fetch users
-    props.actions.fetchUsers();
+    actions.fetchUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onUserSelected = useCallback(
     (user: User) => {
-      props.navigation.navigate(ScreenNames.SleepDetails, {
+      navigation.navigate(ScreenNames.SleepDetails, {
         user,
       });
     },
-    [props.navigation],
+    [navigation],
   );
 
-  const { users, isFetchingUsers } = props.selectedState;
+  const onRetryTapped = useCallback(() => {
+    // on screen load, fetch users
+    actions.fetchUsers();
+  }, [actions]);
+
+  const { users, isFetchingUsers } = selectedState;
   return (
     <UserListComponent
       users={users}
       isLoading={isFetchingUsers}
       onUserSelected={onUserSelected}
+      onRetryTapped={onRetryTapped}
     />
   );
 };
