@@ -3,31 +3,33 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    paddingBottom: 10,
-    justifyContent: 'center',
-  },
-  noDataContainer: {
-    flexGrow: 1,
-    bottom: '10%',
     justifyContent: 'center',
     alignItems: 'center',
+    // backgroundColor: 'white',
   },
-  noDataIconContainer: {
-    top: '20%',
-    justifyContent: 'center',
-    alignItems: 'center',
+  chart: {
+    // width: '50%',
+    paddingLeft: '20%',
   },
-  noDataIcon: {
-    position: 'absolute',
-  },
-  noDataTitleText: {
-    paddingVertical: 10,
+  titleText: {
+    paddingBottom: 50,
     fontSize: 30,
-    fontWeight: 'bold',
   },
-  noDataDescriptionText: {
-    fontSize: 16,
-    textAlign: 'center',
+  chartLabelsContainer: {
+    position: 'absolute',
+    height: '100%',
+    paddingHorizontal: 10,
+    borderRightWidth: 1,
+    borderRightColor: '#9F1777',
+  },
+  chartLabelsTextContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    // borderWidth: 1,
+    // borderTopColor: 'blue',
+  },
+  chartLabelsText: {
+    // backgroundColor: 'pink'
   },
 });
 

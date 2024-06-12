@@ -1,30 +1,29 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import StatisticsTabComponent from './StatisticsTab.component';
 import withState from 'src/store/hooks/withState';
 import {
+  GraphData,
   StatisticsTabProps,
   StatisticsTabSelectedState,
 } from './StatisticsTab.types';
 import useSleepData from '../hooks/Tab.hooks';
+import { convertIntervalDataToGraphData } from './StatisticsTab.utils';
 
 const StatisticsTabContainer = ({
   navigation,
   selectedState,
 }: StatisticsTabProps) => {
-  const [selectedDatetimeInterval, isFocused] = useSleepData(
+  const [selectedDatetimeInterval] = useSleepData(
     selectedState.selectedDate,
     selectedState.selectedUserData,
     navigation,
   );
 
-  return (
-    <StatisticsTabComponent
-      isFocused={isFocused}
-      sleepScore={selectedDatetimeInterval?.score}
-      totalHours={selectedDatetimeInterval?.totalSleepHours}
-      averageHeartRate={selectedDatetimeInterval?.averageHeartRate}
-    />
-  );
+  const graphData = useMemo<GraphData | null>(() => {
+    return convertIntervalDataToGraphData(selectedDatetimeInterval);
+  }, [selectedDatetimeInterval]);
+
+  return <StatisticsTabComponent graphData={graphData} />;
 };
 
 export default withState(

@@ -15,13 +15,14 @@ export const fetchAllUsers = () => {
 type ISO8601Date = string;
 type UserEndpointTimeseriesArray = Array<[ISO8601Date, number]>;
 
+export type UserEndpointSleepStage = {
+  stage: 'awake' | 'light' | 'deep' | 'out';
+  duration: number; // minute count example 3840
+};
 export interface UserEndpointInterval {
   id: string; // 1488856380
   ts: ISO8601Date;
-  stages: {
-    stage: 'awake' | 'light' | 'deep' | 'out';
-    duration: number; // minute count example 3840
-  }[];
+  stages: Array<UserEndpointSleepStage>;
   score: number; // percentage xx example 82
   timeseries: {
     tnt: UserEndpointTimeseriesArray; // count x

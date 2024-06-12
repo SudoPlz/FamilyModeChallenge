@@ -12,3 +12,6 @@ export type StatisticsTabProps = PropsWithActionsAndState<
   StatisticsTabSelectedState, // redux state
   ScreenNames.StatisticsTab // route name
 >;
+
+export type GraphSingleData = { timestamp: number; value: number };
+export type GraphData = Array<GraphSingleData>;

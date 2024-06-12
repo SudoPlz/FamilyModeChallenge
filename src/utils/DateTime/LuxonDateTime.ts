@@ -102,6 +102,10 @@ export default class LuxonDateTime {
     return this.instance.toJSDate();
   };
 
+  toUnixTimestamp = (): number => {
+    return this.instance.toMillis();
+  };
+
   add = (value: number, unit: DateTimeBaseUnit): this => {
     return new LuxonDateTime(
       this.instance.plus(this.createDuration(value, unit)),

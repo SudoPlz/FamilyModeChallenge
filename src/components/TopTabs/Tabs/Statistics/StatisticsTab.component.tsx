@@ -1,33 +1,50 @@
-import React, { useEffect, useRef } from 'react';
-import { View } from 'react-native';
+import React from 'react';
+import { useWindowDimensions, View } from 'react-native';
 import styles from './StatisticsTab.styles';
-import { ProgressRef } from 'react-native-circular-progress-indicator';
-import NoData from 'src/components/Shared/NoData';
+// import NoData from 'src/components/Shared/NoData';
+import Chart from 'src/components/Shared/Chart';
+import type { GraphData } from './StatisticsTab.types';
+import { ReverseSleepStageToGraphNumericValueMapping } from './StatisticsTab.constants';
+import Text from 'src/components/Shared/Text';
 
 type StatisticsTabComponentProps = {
-  sleepScore?: number;
-  totalHours?: number;
-  averageHeartRate?: number;
-  isFocused: boolean;
+  graphData: GraphData | null;
 };
-const StatisticsTabComponent = ({
-  sleepScore,
-  totalHours,
-  averageHeartRate,
-  isFocused,
-}: StatisticsTabComponentProps) => {
-  const circleAnimationRef = useRef<ProgressRef>(null);
 
-  useEffect(() => {
-    if (isFocused) {
-      // restart animation on re-focus
-      circleAnimationRef.current?.reAnimate();
-    }
-  }, [isFocused]);
+const textFormatter = ({ value }: { value: string; formatted: string }) => {
+  'worklet';
+  return `${
+    ReverseSleepStageToGraphNumericValueMapping[Math.abs(parseInt(value, 10))]
+  }`;
+};
+
+const StatisticsTabComponent = ({ graphData }: StatisticsTabComponentProps) => {
+  const { width: screenWidth, height: screenHeight } = useWindowDimensions();
 
   return (
     <View style={styles.container}>
-      {sleepScore && averageHeartRate && totalHours ? <View /> : <NoData />}
+      <Text style={styles.titleText}>Sleep Stages</Text>
+      <Chart
+        data={graphData || []}
+        textFormatter={textFormatter}
+        style={styles.chart}
+        width={screenWidth * 0.7}
+        height={screenHeight * 0.4}>
+        <View style={styles.chartLabelsContainer}>
+          <View style={styles.chartLabelsTextContainer}>
+            <Text style={styles.chartLabelsText}>Out</Text>
+          </View>
+          <View style={styles.chartLabelsTextContainer}>
+            <Text style={styles.chartLabelsText}>Awake</Text>
+          </View>
+          <View style={styles.chartLabelsTextContainer}>
+            <Text style={styles.chartLabelsText}>Light</Text>
+          </View>
+          <View style={styles.chartLabelsTextContainer}>
+            <Text style={styles.chartLabelsText}>Deep</Text>
+          </View>
+        </View>
+      </Chart>
     </View>
   );
 };
