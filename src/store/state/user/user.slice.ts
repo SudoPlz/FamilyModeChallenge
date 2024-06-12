@@ -9,6 +9,7 @@ import {
 import LuxonDateTime from 'src/utils/DateTime';
 
 const initialState: InitialUserState = {
+  selectedDate: LuxonDateTime.now(),
   selectedUser: null,
   users: null,
   loading: {
@@ -51,6 +52,11 @@ const userSlice = createSlice({
   reducers: {
     clearSelectedUser() {
       return initialState;
+    },
+    setSelectedDate(state, action) {
+      if (action.payload) {
+        state.selectedDate = action.payload;
+      }
     },
   },
   extraReducers: builder => {
@@ -103,6 +109,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { clearSelectedUser } = userSlice.actions;
+export const { clearSelectedUser, setSelectedDate } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,33 +1,32 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
 import styles from './SleepDetails.styles';
 import Layout from '../Shared/Layout';
 import type { SelectedUserData } from '../../store/state/user/user.types';
 import { useNavigation } from '../../routes/Router.hooks';
 import DatePicker from '../Shared/DatePicker/DatePicker';
-import DateTime from '../../utils/DateTime';
+import type DateTime from '../../utils/DateTime';
 import TopTabs from '../TopTabs/TopTabsNavigation';
 
 type SleepDetailsComponentProps = {
+  selectedDate: DateTime;
   isLoading: boolean;
   selectedUserData: SelectedUserData;
+  onDatePicked: (date: DateTime) => void;
 };
 const SleepDetailsContainer = ({
   isLoading,
   selectedUserData,
+  onDatePicked,
+  selectedDate,
 }: SleepDetailsComponentProps) => {
   const navigation = useNavigation();
-  const [selectedDate, setSelectedDate] = useState<DateTime>(DateTime.now());
 
   useEffect(() => {
     if (selectedUserData?.user?.name) {
       navigation.setOptions({ title: selectedUserData.user?.name });
     }
   }, [navigation, selectedUserData?.user?.name]);
-
-  const onDatePicked = useCallback((date: DateTime) => {
-    setSelectedDate(date);
-  }, []);
 
   if (isLoading) {
     return (

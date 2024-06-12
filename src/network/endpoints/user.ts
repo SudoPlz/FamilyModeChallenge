@@ -15,7 +15,7 @@ export const fetchAllUsers = () => {
 type ISO8601Date = string;
 type UserEndpointTimeseriesArray = Array<[ISO8601Date, number]>;
 
-interface UserEndpointInterval {
+export interface UserEndpointInterval {
   id: string; // 1488856380
   ts: ISO8601Date;
   stages: {
