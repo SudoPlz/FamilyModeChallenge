@@ -3427,6 +3427,7 @@ __metadata:
     react-native-linear-gradient: ^2.8.3
     react-native-mmkv: ^2.12.2
     react-native-pager-view: ^6.3.1
+    react-native-particles: ^0.0.8
     react-native-reanimated: ^3.12.0
     react-native-reanimated-carousel: ^3.5.1
     react-native-safe-area-context: ^4.9.0
@@ -10046,6 +10047,17 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: ef83fb53350d7b4c262a8c4d4bf6fbee8f8941e56469135463a47d496ff8fd43f7efe52d02c3a583427800fc88c96a9bf8e601a45a6e671834d5fffe9541e3e4
+  languageName: node
+  linkType: hard
+
+"react-native-particles@npm:^0.0.8":
+  version: 0.0.8
+  resolution: "react-native-particles@npm:0.0.8"
+  dependencies:
+    lodash.debounce: ^4.0.8
+  peerDependencies:
+    react-native: ">=0.20.0"
+  checksum: 9c8a2242db03619bf618f17ac07d5087a99280ff951e7aa849cc676da21aad58f7a6cfa977245f7980f84be7eaf208cff2d2ed93f530ce8a60554939c74337c7
   languageName: node
   linkType: hard
 

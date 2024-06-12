@@ -95,6 +95,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  particle: {
+    color: '#FFFFFF55',
+  },
 });
 
 export default styles;

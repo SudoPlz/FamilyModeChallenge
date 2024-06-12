@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 export const BED_ICON_SIZE = 220;
+export const DESCRIPTOR_SIZE = BED_ICON_SIZE * 0.5;
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -41,14 +42,17 @@ const styles = StyleSheet.create({
     left: BED_ICON_SIZE * 0.7,
     top: -40,
     borderRadius: 50,
-    minWidth: BED_ICON_SIZE * 0.5,
-    minHeight: BED_ICON_SIZE * 0.5,
+    minWidth: DESCRIPTOR_SIZE,
+    minHeight: DESCRIPTOR_SIZE,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#151515',
   },
   roomTemperatureText: {
     fontSize: 20,
+  },
+  particle: {
+    color: 'white',
   },
 });
 
