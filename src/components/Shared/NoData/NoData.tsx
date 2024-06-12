@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 import Text from 'src/components/Shared/Text';
-import styles from './SummaryTab.styles';
 import Icon from 'src/components/Shared/Icon';
+import styles from './NoData.styles';
 
 const SummaryNoData: React.FC = () => {
   return (

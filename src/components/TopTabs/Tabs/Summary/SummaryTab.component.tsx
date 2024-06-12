@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { View } from 'react-native';
-import styles from './SummaryTab.styles';
 import { ProgressRef } from 'react-native-circular-progress-indicator';
+import NoData from 'src/components/Shared/NoData/NoData';
+import styles from './SummaryTab.styles';
 import SummaryDescription from './SummaryDescription';
-import SummaryNoData from './SummaryNoData';
 
 type SummaryTabComponentProps = {
   sleepScore?: number;
@@ -36,7 +36,7 @@ const SummaryTabComponent = ({
           ref={circleAnimationRef}
         />
       ) : (
-        <SummaryNoData />
+        <NoData />
       )}
     </View>
   );
