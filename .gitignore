@@ -83,5 +83,4 @@ index.android.bundle
 .vscode/
 .env
 .env.production
-.env.development
 .eslintcache
