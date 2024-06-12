@@ -1,23 +1,53 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-import Icon from '../../../Shared/Icon';
+import React, { useMemo } from 'react';
+import TemperatureTabComponent from './TemperatureTab.component';
+import withState from 'src/store/hooks/withState';
+import {
+  TemperatureData,
+  TemperatureTabProps,
+  TemperatureTabSelectedState,
+} from './TemperatureTab.types';
+import useSleepData from '../hooks/Tab.hooks';
+import { convertIntervalDataToTemperatureGraphData } from './TemperatureTab.utils';
 
-export const TemperatureTabBarIcon = ({
-  focused,
-  color,
-}: {
-  focused: boolean;
-  color: string;
-}) => (
-  <Icon name="thermometer-outline" color={color} size={focused ? 24 : 20} />
-);
+const TemperatureTabContainer = ({
+  navigation,
+  selectedState,
+}: TemperatureTabProps) => {
+  const [selectedDatetimeInterval] = useSleepData(
+    selectedState.selectedDate,
+    selectedState.selectedUserData,
+    navigation,
+  );
 
-const HelloWorld: React.FC = () => {
+  const temperatureData = useMemo<{
+    bedData: TemperatureData | null;
+    roomData: TemperatureData | null;
+  } | null>(() => {
+    return {
+      bedData: convertIntervalDataToTemperatureGraphData(
+        selectedDatetimeInterval,
+        'tempBedC',
+      ),
+      roomData: convertIntervalDataToTemperatureGraphData(
+        selectedDatetimeInterval,
+        'tempRoomC',
+      ),
+    };
+  }, [selectedDatetimeInterval]);
+
   return (
-    <View>
-      <Text>Hello Temp</Text>
-    </View>
+    <TemperatureTabComponent
+      bedData={temperatureData?.bedData}
+      roomData={temperatureData?.roomData}
+    />
   );
 };
 
-export default HelloWorld;
+export default withState(
+  TemperatureTabContainer,
+  state =>
+    ({
+      selectedUserData: state.user.selectedUser,
+      selectedDate: state.user.selectedDate,
+    } as TemperatureTabSelectedState),
+);

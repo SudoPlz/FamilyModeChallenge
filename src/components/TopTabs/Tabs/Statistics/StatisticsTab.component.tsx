@@ -26,28 +26,34 @@ const StatisticsTabComponent = ({ graphData }: StatisticsTabComponentProps) => {
     <View style={styles.container}>
       {graphData ? (
         <>
-          <Text style={styles.titleText}>Sleep Stages</Text>
-          <Chart
-            data={graphData || []}
-            textFormatter={textFormatter}
-            style={styles.chart}
-            width={screenWidth * 0.7}
-            height={screenHeight * 0.4}>
-            <View style={styles.chartLabelsContainer}>
-              <View style={styles.chartLabelsTextContainer}>
-                <Text style={styles.chartLabelsText}>Out</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleText}>Sleep Stages</Text>
+            <Text style={styles.subTitleText}>(slide to check it out)</Text>
+          </View>
+          <View style={styles.body}>
+            <Chart
+              showTooltipOnDrag
+              data={graphData || []}
+              textFormatter={textFormatter}
+              style={styles.chart}
+              width={screenWidth * 0.7}
+              height={screenHeight * 0.4}>
+              <View style={styles.chartLabelsContainer}>
+                <View style={styles.chartLabelsTextContainer}>
+                  <Text style={styles.chartLabelsText}>Out</Text>
+                </View>
+                <View style={styles.chartLabelsTextContainer}>
+                  <Text style={styles.chartLabelsText}>Awake</Text>
+                </View>
+                <View style={styles.chartLabelsTextContainer}>
+                  <Text style={styles.chartLabelsText}>Light</Text>
+                </View>
+                <View style={styles.chartLabelsTextContainer}>
+                  <Text style={styles.chartLabelsText}>Deep</Text>
+                </View>
               </View>
-              <View style={styles.chartLabelsTextContainer}>
-                <Text style={styles.chartLabelsText}>Awake</Text>
-              </View>
-              <View style={styles.chartLabelsTextContainer}>
-                <Text style={styles.chartLabelsText}>Light</Text>
-              </View>
-              <View style={styles.chartLabelsTextContainer}>
-                <Text style={styles.chartLabelsText}>Deep</Text>
-              </View>
-            </View>
-          </Chart>
+            </Chart>
+          </View>
         </>
       ) : (
         <NoData />

@@ -3,7 +3,7 @@ import LuxonDateTime from 'src/utils/DateTime';
 import { GraphData } from './StatisticsTab.types';
 import { SleepStageToGraphNumericValueMapping } from './StatisticsTab.constants';
 
-export function convertIntervalDataToGraphData(
+export function convertIntervalDataToSleepStageGraphData(
   interval: SleepInterval | null,
 ): GraphData | null {
   if (!interval?.ts || !interval.stages || interval.stages?.length <= 0) {

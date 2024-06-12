@@ -9,6 +9,8 @@ type ChartProps = {
   width?: number;
   height?: number;
   style?: ViewStyle;
+  showTooltipOnDrag?: boolean;
+  onCurrentIndexChange?: (index: number) => void;
 };
 
 const Chart = ({
@@ -17,11 +19,15 @@ const Chart = ({
   style,
   width,
   height,
+  onCurrentIndexChange,
+  showTooltipOnDrag,
   children,
 }: PropsWithChildren<ChartProps>) => {
   return (
     <View style={style}>
-      <LineChart.Provider data={data}>
+      <LineChart.Provider
+        data={data}
+        onCurrentIndexChange={onCurrentIndexChange}>
         <LineChart width={width} height={height}>
           <LineChart.Path color="#5208F0">
             <LineChart.Gradient color="#B00029" />
@@ -29,12 +35,14 @@ const Chart = ({
           </LineChart.Path>
           <LineChart.CursorCrosshair color="#B00029">
             <LineChart.HoverTrap />
-            <LineChart.Tooltip
-              textStyle={styles.labelText}
-              textProps={{
-                format: textFormatter,
-              }}
-            />
+            {showTooltipOnDrag ? (
+              <LineChart.Tooltip
+                textStyle={styles.labelText}
+                textProps={{
+                  format: textFormatter,
+                }}
+              />
+            ) : null}
           </LineChart.CursorCrosshair>
         </LineChart>
         <LineChart.DatetimeText

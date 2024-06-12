@@ -7,13 +7,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // backgroundColor: 'white',
   },
+  body: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
   chart: {
     // width: '50%',
     paddingLeft: '20%',
   },
+  titleContainer: {
+    paddingTop: 40,
+    alignItems: 'center',
+  },
   titleText: {
-    paddingBottom: 50,
     fontSize: 30,
+  },
+  subTitleText: {
+    fontSize: 14,
+    color: '#ADB3C5',
   },
   chartLabelsContainer: {
     position: 'absolute',

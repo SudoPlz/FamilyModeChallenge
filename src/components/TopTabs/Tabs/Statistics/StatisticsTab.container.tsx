@@ -7,7 +7,7 @@ import {
   StatisticsTabSelectedState,
 } from './StatisticsTab.types';
 import useSleepData from '../hooks/Tab.hooks';
-import { convertIntervalDataToGraphData } from './StatisticsTab.utils';
+import { convertIntervalDataToSleepStageGraphData } from './StatisticsTab.utils';
 
 const StatisticsTabContainer = ({
   navigation,
@@ -20,7 +20,7 @@ const StatisticsTabContainer = ({
   );
 
   const graphData = useMemo<GraphData | null>(() => {
-    return convertIntervalDataToGraphData(selectedDatetimeInterval);
+    return convertIntervalDataToSleepStageGraphData(selectedDatetimeInterval);
   }, [selectedDatetimeInterval]);
 
   return <StatisticsTabComponent graphData={graphData} />;
