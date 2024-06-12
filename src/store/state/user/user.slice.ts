@@ -1,6 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import EightSleepApi from '../../../network/EightSleepApi';
-import type { InitialUserState, User } from './user.types';
+import type { InitialUserState, SleepInterval, User } from './user.types';
+import { UserEndpointInterval } from 'src/network/endpoints/user';
+import {
+  calculateAverageHeartRate,
+  calculateTotalSleepHours,
+} from './user.utils';
+import LuxonDateTime from 'src/utils/DateTime';
 
 const initialState: InitialUserState = {
   selectedUser: null,
@@ -71,10 +77,22 @@ const userSlice = createSlice({
         const fetchedUser = state.users?.find(
           (item: User) => item.id === userId,
         );
+
+        let beefedIntervals: Array<SleepInterval> = [];
+        if (intervals?.length > 0) {
+          beefedIntervals = intervals.map<SleepInterval>(
+            (interval: UserEndpointInterval) => ({
+              ...interval,
+              totalSleepHours: calculateTotalSleepHours(interval),
+              averageHeartRate: calculateAverageHeartRate(interval),
+            }),
+          );
+        }
+
         if (fetchedUser) {
           state.selectedUser = {
             user: fetchedUser,
-            intervals,
+            intervals: beefedIntervals,
           };
         }
       })
