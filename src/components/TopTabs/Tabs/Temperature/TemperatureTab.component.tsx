@@ -21,7 +21,16 @@ const temperatureTextFormatter = ({
   formatted: string;
 }) => {
   'worklet';
-  return formatCelciusTemperatureString(value);
+  return formatCelciusTemperatureString(value, 1);
+};
+const temperatureShortTextFormatter = ({
+  value,
+}: {
+  value: string;
+  formatted: string;
+}) => {
+  'worklet';
+  return formatCelciusTemperatureString(value, 0);
 };
 
 const TemperatureTabComponent = ({
@@ -41,8 +50,10 @@ const TemperatureTabComponent = ({
           </View>
           <View style={styles.body}>
             <Chart
+              showStaticLabels
               data={bedData?.graphData || []}
               textFormatter={temperatureTextFormatter}
+              staticLabelsFormatter={temperatureShortTextFormatter}
               style={styles.chart}
               width={screenWidth * 0.9}
               height={screenHeight * 0.2}

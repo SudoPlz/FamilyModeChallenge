@@ -40,7 +40,10 @@ export function convertIntervalDataToTemperatureGraphData(
   return { graphData, minValue, maxValue };
 }
 
-export function formatCelciusTemperatureString(value: string | number): string {
+export function formatCelciusTemperatureString(
+  value: string | number,
+  decimals: number = 1,
+): string {
   'worklet';
-  return `${parseFloat(value as string).toFixed(1)}°C`;
+  return `${parseFloat(value as string).toFixed(decimals)}°C`;
 }
