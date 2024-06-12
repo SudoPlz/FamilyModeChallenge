@@ -1264,6 +1264,8 @@ PODS:
     - Yoga
   - RNKeychain (8.2.0):
     - React-Core
+  - RNReactNativeHapticFeedback (2.2.0):
+    - React-Core
   - RNReanimated (3.12.0):
     - DoubleConversion
     - glog
@@ -1399,6 +1401,7 @@ DEPENDENCIES:
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNKeychain (from `../node_modules/react-native-keychain`)
+  - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -1539,6 +1542,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNKeychain:
     :path: "../node_modules/react-native-keychain"
+  RNReactNativeHapticFeedback:
+    :path: "../node_modules/react-native-haptic-feedback"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -1616,6 +1621,7 @@ SPEC CHECKSUMS:
   RNDateTimePicker: 4f3c4dbd4f908be32ec8c93f086e8924bd4a2e07
   RNGestureHandler: 2282cfbcf86c360d29f44ace393203afd5c6cff7
   RNKeychain: bfe3d12bf4620fe488771c414530bf16e88f3678
+  RNReactNativeHapticFeedback: ec56a5f81c3941206fd85625fa669ffc7b4545f9
   RNReanimated: 8978449b2a511388ea71faf1e66f669134e87658
   RNScreens: b32a9ff15bea7fcdbe5dff6477bc503f792b1208
   RNSVG: a48668fd382115bc89761ce291a81c4ca5f2fd2e
