@@ -1,21 +1,37 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import Icon from '../../../Shared/Icon';
+import StatisticsTabComponent from './StatisticsTab.component';
+import withState from 'src/store/hooks/withState';
+import {
+  StatisticsTabProps,
+  StatisticsTabSelectedState,
+} from './StatisticsTab.types';
+import useSleepData from '../hooks/Tab.hooks';
 
-export const StatisticsTabBarIcon = ({
-  focused,
-  color,
-}: {
-  focused: boolean;
-  color: string;
-}) => <Icon name="pulse-outline" color={color} size={focused ? 24 : 20} />;
+const StatisticsTabContainer = ({
+  navigation,
+  selectedState,
+}: StatisticsTabProps) => {
+  const [selectedDatetimeInterval, isFocused] = useSleepData(
+    selectedState.selectedDate,
+    selectedState.selectedUserData,
+    navigation,
+  );
 
-const HelloWorld: React.FC = () => {
   return (
-    <View>
-      <Text>Hello Statistics</Text>
-    </View>
+    <StatisticsTabComponent
+      isFocused={isFocused}
+      sleepScore={selectedDatetimeInterval?.score}
+      totalHours={selectedDatetimeInterval?.totalSleepHours}
+      averageHeartRate={selectedDatetimeInterval?.averageHeartRate}
+    />
   );
 };
 
-export default HelloWorld;
+export default withState(
+  StatisticsTabContainer,
+  state =>
+    ({
+      selectedUserData: state.user.selectedUser,
+      selectedDate: state.user.selectedDate,
+    } as StatisticsTabSelectedState),
+);
