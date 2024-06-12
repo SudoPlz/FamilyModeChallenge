@@ -12,6 +12,7 @@ import NoData from 'src/components/Shared/NoData';
 import Icon from 'src/components/Shared/Icon';
 import { formatCelciusTemperatureString } from './TemperatureTab.utils';
 import Particles from 'src/components/Shared/Particles';
+import { ScrollView } from 'react-native-gesture-handler';
 
 type TemperatureTabComponentProps = {
   roomData?: TemperatureData | null;
@@ -64,7 +65,9 @@ const TemperatureTabComponent = ({
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.scrollView}
+      contentContainerStyle={styles.container}>
       {bedData || roomData ? (
         <>
           <View style={styles.titleContainer}>
@@ -134,7 +137,7 @@ const TemperatureTabComponent = ({
       ) : (
         <NoData />
       )}
-    </View>
+    </ScrollView>
   );
 };
 

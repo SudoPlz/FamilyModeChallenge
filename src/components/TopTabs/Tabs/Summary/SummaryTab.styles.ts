@@ -7,10 +7,21 @@ export const ProgressValueFontSize = 60;
 const HORIZONTAL_PADDING = 20;
 const ABSOLUTE_VIEW_TEXT_LEFT_POSITION = '59%';
 const styles = StyleSheet.create({
+  scrollView: { flex: 1 },
   container: {
     flexGrow: 1,
     paddingBottom: 10,
     justifyContent: 'center',
+  },
+  titleContainer: {
+    paddingVertical: 40,
+    alignItems: 'center',
+  },
+  body: {
+    flexGrow: 1,
+  },
+  titleText: {
+    fontSize: 30,
   },
   percentageContainer: {
     flexDirection: 'row',

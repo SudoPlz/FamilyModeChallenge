@@ -6,6 +6,7 @@ import Chart from 'src/components/Shared/Chart';
 import type { TossAndTurnData } from './TossAndTurnTab.types';
 import Text from 'src/components/Shared/Text';
 import NoData from 'src/components/Shared/NoData';
+import { ScrollView } from 'react-native-gesture-handler';
 
 type TossAndTurnTabComponentProps = {
   tossAndTurnData?: TossAndTurnData | null;
@@ -26,7 +27,9 @@ const TossAndTurnTabComponent = ({
 }: TossAndTurnTabComponentProps) => {
   const { width: screenWidth, height: screenHeight } = useWindowDimensions();
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.scrollView}
+      contentContainerStyle={styles.container}>
       {tossAndTurnData ? (
         <>
           <View style={styles.titleContainer}>
@@ -54,7 +57,7 @@ const TossAndTurnTabComponent = ({
       ) : (
         <NoData />
       )}
-    </View>
+    </ScrollView>
   );
 };
 

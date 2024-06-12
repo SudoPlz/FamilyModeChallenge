@@ -7,6 +7,7 @@ import type { GraphData } from './StatisticsTab.types';
 import { ReverseSleepStageToGraphNumericValueMapping } from './StatisticsTab.constants';
 import Text from 'src/components/Shared/Text';
 import NoData from 'src/components/Shared/NoData';
+import { ScrollView } from 'react-native-gesture-handler';
 
 type StatisticsTabComponentProps = {
   graphData: GraphData | null;
@@ -23,7 +24,9 @@ const StatisticsTabComponent = ({ graphData }: StatisticsTabComponentProps) => {
   const { width: screenWidth, height: screenHeight } = useWindowDimensions();
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.scrollView}
+      contentContainerStyle={styles.container}>
       {graphData ? (
         <>
           <View style={styles.titleContainer}>
@@ -58,7 +61,7 @@ const StatisticsTabComponent = ({ graphData }: StatisticsTabComponentProps) => {
       ) : (
         <NoData />
       )}
-    </View>
+    </ScrollView>
   );
 };
 

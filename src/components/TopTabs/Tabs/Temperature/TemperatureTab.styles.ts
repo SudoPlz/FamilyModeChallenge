@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 export const BED_ICON_SIZE = 220;
 export const DESCRIPTOR_SIZE = BED_ICON_SIZE * 0.5;
 const styles = StyleSheet.create({
+  scrollView: { flex: 1 },
   container: {
     flexGrow: 1,
     // backgroundColor: 'white',
