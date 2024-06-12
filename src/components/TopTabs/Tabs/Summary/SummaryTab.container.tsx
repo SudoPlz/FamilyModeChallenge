@@ -1,34 +1,18 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React from 'react';
 import SummaryTabComponent from './SummaryTab.component';
 import withState from 'src/store/hooks/withState';
 import { SummaryTabProps, SummaryTabSelectedState } from './SummaryTab.types';
-import type { SleepInterval } from 'src/store/state/user/user.types';
-import { findIntervalForDateTime } from 'src/utils/Interval.utils';
+import useSleepData from '../hooks/Tab.hooks';
 
 const SummaryTabContainer = ({
   navigation,
   selectedState,
 }: SummaryTabProps) => {
-  const selectedDatetimeInterval = useMemo<SleepInterval | null>(() => {
-    return findIntervalForDateTime(
-      selectedState.selectedDate,
-      selectedState.selectedUserData?.intervals,
-    );
-  }, [selectedState.selectedDate, selectedState.selectedUserData]);
-
-  const [isFocused, setIsFocused] = useState(navigation.isFocused());
-  useEffect(() => {
-    const unsubscribeIsFocused = navigation.addListener('focus', () => {
-      setIsFocused(true);
-    });
-    const unsubscribeIsBlured = navigation.addListener('blur', () => {
-      setIsFocused(false);
-    });
-    return () => {
-      unsubscribeIsFocused();
-      unsubscribeIsBlured();
-    };
-  }, [navigation]);
+  const [selectedDatetimeInterval, isFocused] = useSleepData(
+    selectedState.selectedDate,
+    selectedState.selectedUserData,
+    navigation,
+  );
 
   return (
     <SummaryTabComponent
