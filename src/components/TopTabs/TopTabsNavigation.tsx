@@ -33,21 +33,21 @@ const TopTabs = () => {
       />
       <Tab.Screen
         name={ScreenNames.StatisticsTab}
-        component={Statistics}
+        component={Statistics as React.FC}
         options={{
           tabBarIcon: StatisticsTabBarIcon,
         }}
       />
       <Tab.Screen
         name={ScreenNames.TemperatureTab}
-        component={Temperature}
+        component={Temperature as React.FC}
         options={{
           tabBarIcon: TemperatureTabBarIcon,
         }}
       />
       <Tab.Screen
         name={ScreenNames.TossAndTurnTab}
-        component={TossAndTurn}
+        component={TossAndTurn as React.FC}
         options={{
           tabBarIcon: TossAndTurnTabBarIcon,
         }}

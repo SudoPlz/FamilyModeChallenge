@@ -51,7 +51,7 @@ export default function RootNavigation() {
             name={ScreenNames.SleepDetails}
             component={SleepDetails as React.FC}
             options={{
-              headerShown: false,
+              headerShown: true,
               animation: 'fade_from_bottom',
               animationDuration: 400,
               statusBarStyle: 'light',
