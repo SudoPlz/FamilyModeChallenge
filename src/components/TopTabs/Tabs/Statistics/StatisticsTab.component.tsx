@@ -6,6 +6,7 @@ import Chart from 'src/components/Shared/Chart';
 import type { GraphData } from './StatisticsTab.types';
 import { ReverseSleepStageToGraphNumericValueMapping } from './StatisticsTab.constants';
 import Text from 'src/components/Shared/Text';
+import NoData from 'src/components/Shared/NoData';
 
 type StatisticsTabComponentProps = {
   graphData: GraphData | null;
@@ -23,28 +24,34 @@ const StatisticsTabComponent = ({ graphData }: StatisticsTabComponentProps) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>Sleep Stages</Text>
-      <Chart
-        data={graphData || []}
-        textFormatter={textFormatter}
-        style={styles.chart}
-        width={screenWidth * 0.7}
-        height={screenHeight * 0.4}>
-        <View style={styles.chartLabelsContainer}>
-          <View style={styles.chartLabelsTextContainer}>
-            <Text style={styles.chartLabelsText}>Out</Text>
-          </View>
-          <View style={styles.chartLabelsTextContainer}>
-            <Text style={styles.chartLabelsText}>Awake</Text>
-          </View>
-          <View style={styles.chartLabelsTextContainer}>
-            <Text style={styles.chartLabelsText}>Light</Text>
-          </View>
-          <View style={styles.chartLabelsTextContainer}>
-            <Text style={styles.chartLabelsText}>Deep</Text>
-          </View>
-        </View>
-      </Chart>
+      {graphData ? (
+        <>
+          <Text style={styles.titleText}>Sleep Stages</Text>
+          <Chart
+            data={graphData || []}
+            textFormatter={textFormatter}
+            style={styles.chart}
+            width={screenWidth * 0.7}
+            height={screenHeight * 0.4}>
+            <View style={styles.chartLabelsContainer}>
+              <View style={styles.chartLabelsTextContainer}>
+                <Text style={styles.chartLabelsText}>Out</Text>
+              </View>
+              <View style={styles.chartLabelsTextContainer}>
+                <Text style={styles.chartLabelsText}>Awake</Text>
+              </View>
+              <View style={styles.chartLabelsTextContainer}>
+                <Text style={styles.chartLabelsText}>Light</Text>
+              </View>
+              <View style={styles.chartLabelsTextContainer}>
+                <Text style={styles.chartLabelsText}>Deep</Text>
+              </View>
+            </View>
+          </Chart>
+        </>
+      ) : (
+        <NoData />
+      )}
     </View>
   );
 };
