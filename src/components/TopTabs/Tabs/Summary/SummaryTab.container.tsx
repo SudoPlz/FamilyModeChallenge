@@ -3,7 +3,7 @@ import SummaryTabComponent from './SummaryTab.component';
 import withState from 'src/store/hooks/withState';
 import { SummaryTabProps, SummaryTabSelectedState } from './SummaryTab.types';
 import type { SleepInterval } from 'src/store/state/user/user.types';
-import { findIntervalForDateTime } from './SummaryTab.utils';
+import { findIntervalForDateTime } from 'src/utils/Interval.utils';
 
 const SummaryTabContainer = ({
   navigation,
