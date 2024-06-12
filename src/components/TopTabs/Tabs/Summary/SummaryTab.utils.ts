@@ -11,7 +11,6 @@ export function findIntervalForDateTime(
     selectedDate == null ||
     !selectedDate.isValid()
   ) {
-    console.log('Na-AH');
     return null;
   }
   return (
