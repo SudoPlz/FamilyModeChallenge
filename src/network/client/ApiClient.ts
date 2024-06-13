@@ -2,6 +2,11 @@ import axios, { type RawAxiosRequestHeaders } from 'axios';
 import statusHandler from '../statusHandler';
 import { ContentTypes, BASE_URL } from './ApiClient.constants';
 
+if (!BASE_URL) {
+  throw new Error(
+    'Please make sure you have an .env (or .env.development|.env.production) file with a BASE_URL variable.',
+  );
+}
 const apiClient = axios.create({
   baseURL: BASE_URL,
   headers: {
